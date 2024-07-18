@@ -33,12 +33,12 @@ const Recipes = () => {
   }, [])
 
   const confirm = (data) => {
-    dispatch({type: "FAVORITE_RECIPES", recepes: data});
-    message.success('Click on Yes');
+    // Retsept ma'lumotlarini omborga qo'shish
+    dispatch({ type: "FAVORITE_RECIPES", recipe: data });
+    message.success('Recipe added to favorites');
   };
   
   const cancel = (e) => {
-    console.log(e);
     message.error('Click on No');
   };
 
@@ -81,7 +81,6 @@ const Recipes = () => {
       sortField: Array.isArray(sorter) ? undefined : sorter.field,
     });
 
-    // `dataSource` is useless since `pageSize` changed
     if (pagination.pageSize !== tableParams.pagination?.pageSize) {
       setData([]);
     }
